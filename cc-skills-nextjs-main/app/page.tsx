@@ -468,7 +468,7 @@ export default async function Page() {
                   href="#pricing"
                   className="text-sm font-semibold text-cyan-200 transition-colors hover:text-cyan-100"
                 >
-                  See plans ->
+                  See plans {'->'} 
                 </a>
               </div>
               <div className="mt-10 grid grid-cols-2 gap-4 md:grid-cols-3 xl:grid-cols-6">
