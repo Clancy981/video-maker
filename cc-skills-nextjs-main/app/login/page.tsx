@@ -5,33 +5,114 @@ import { SubmitButton } from 'app/submit-button';
 
 export default function Login() {
   return (
-    <div className="flex h-screen w-screen items-center justify-center bg-gray-50">
-      <div className="z-10 w-full max-w-md overflow-hidden rounded-2xl border border-gray-100 shadow-xl">
-        <div className="flex flex-col items-center justify-center space-y-3 border-b border-gray-200 bg-white px-4 py-6 pt-8 text-center sm:px-16">
-          <h3 className="text-xl font-semibold">Sign In</h3>
-          <p className="text-sm text-gray-500">
-            Use your email and password to sign in
-          </p>
+    <div className="min-h-screen bg-[#07080f] text-white">
+      <div className="relative min-h-screen overflow-hidden">
+        <div className="pointer-events-none absolute inset-0">
+          <div className="absolute -top-40 left-1/2 h-[520px] w-[520px] -translate-x-1/2 rounded-full bg-blue-500/20 blur-[140px]" />
+          <div className="absolute top-32 right-0 h-[420px] w-[420px] rounded-full bg-cyan-400/20 blur-[140px]" />
+          <div className="absolute bottom-0 left-0 h-[360px] w-[360px] rounded-full bg-orange-500/20 blur-[140px]" />
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(255,255,255,0.08),transparent_55%)]" />
+          <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(255,255,255,0.06)_1px,transparent_1px),linear-gradient(180deg,rgba(255,255,255,0.06)_1px,transparent_1px)] bg-[length:64px_64px] opacity-20" />
         </div>
-        <Form
-          action={async (formData: FormData) => {
-            'use server';
-            await signIn('credentials', {
-              redirectTo: '/protected',
-              email: formData.get('email') as string,
-              password: formData.get('password') as string,
-            });
-          }}
-        >
-          <SubmitButton>Sign in</SubmitButton>
-          <p className="text-center text-sm text-gray-600">
-            {"Don't have an account? "}
-            <Link href="/register" className="font-semibold text-gray-800">
-              Sign up
-            </Link>
-            {' for free.'}
-          </p>
-        </Form>
+
+        <main className="relative z-10 flex min-h-screen items-center justify-center px-6 py-16">
+          <div className="grid w-full max-w-5xl gap-10 lg:grid-cols-[1fr_0.85fr]">
+            <section className="rounded-3xl border border-white/10 bg-black/40 p-8 shadow-[0_30px_120px_rgba(15,23,42,0.65)] backdrop-blur sm:p-10">
+              <div className="flex items-center justify-between">
+                <Link href="/" className="flex items-center gap-3">
+                  <div className="flex h-10 w-10 items-center justify-center rounded-full bg-gradient-to-br from-blue-500 to-cyan-400 font-[var(--font-heading)] text-lg">
+                    V
+                  </div>
+                  <span className="text-sm font-semibold tracking-[0.35em]">
+                    VIBVIB
+                  </span>
+                </Link>
+                <span className="text-[11px] uppercase tracking-[0.4em] text-slate-500">
+                  Sign in
+                </span>
+              </div>
+
+              <h1 className="mt-8 text-3xl font-[var(--font-heading)] text-white sm:text-4xl">
+                Welcome back
+              </h1>
+              <p className="mt-3 text-sm text-slate-300">
+                Sign in to direct your next vertical story.
+              </p>
+
+              <Form
+                action={async (formData: FormData) => {
+                  'use server';
+                  await signIn('credentials', {
+                    redirectTo: '/protected',
+                    email: formData.get('email') as string,
+                    password: formData.get('password') as string,
+                  });
+                }}
+              >
+                <SubmitButton>Sign in</SubmitButton>
+                <p className="text-center text-xs text-slate-400">
+                  {"Don't have an account? "}
+                  <Link
+                    href="/register"
+                    className="font-semibold text-cyan-200 hover:text-cyan-100"
+                  >
+                    Create one
+                  </Link>
+                </p>
+              </Form>
+
+              <div className="mt-8 flex flex-wrap gap-3 text-[11px] uppercase tracking-[0.26em] text-slate-500">
+                <span className="rounded-full border border-white/10 px-4 py-2">
+                  3:4 exports
+                </span>
+                <span className="rounded-full border border-white/10 px-4 py-2">
+                  Brand safe
+                </span>
+                <span className="rounded-full border border-white/10 px-4 py-2">
+                  Fast renders
+                </span>
+              </div>
+            </section>
+
+            <aside className="hidden flex-col gap-6 lg:flex">
+              <div className="rounded-3xl border border-white/10 bg-white/5 p-6">
+                <div className="aspect-[3/4] overflow-hidden rounded-2xl border border-white/10">
+                  <video
+                    className="h-full w-full object-cover"
+                    src="/video/video-2.mp4"
+                    autoPlay
+                    muted
+                    loop
+                    playsInline
+                    preload="metadata"
+                    aria-label="VibVib preview video"
+                  />
+                </div>
+                <div className="mt-4 flex items-center justify-between text-[11px] uppercase tracking-[0.3em] text-slate-500">
+                  <span>Live render</span>
+                  <span>3:4</span>
+                </div>
+              </div>
+
+              <div className="grid gap-4 sm:grid-cols-2">
+                <div className="rounded-2xl border border-white/10 bg-white/5 p-4">
+                  <p className="text-[11px] uppercase tracking-[0.3em] text-slate-500">
+                    Speed
+                  </p>
+                  <p className="mt-2 text-lg font-semibold text-white">4.2s</p>
+                  <p className="text-xs text-slate-400">Avg render time</p>
+                </div>
+                <div className="rounded-2xl border border-white/10 bg-white/5 p-4">
+                  <p className="text-[11px] uppercase tracking-[0.3em] text-slate-500">
+                    Resolution
+                  </p>
+                  <p className="mt-2 text-lg font-semibold text-white">4K</p>
+                  <p className="text-xs text-slate-400">Studio exports</p>
+                </div>
+              </div>
+            </aside>
+          </div>
+        </main>
       </div>
     </div>
   );

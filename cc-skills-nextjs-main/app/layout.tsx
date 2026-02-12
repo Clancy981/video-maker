@@ -1,10 +1,22 @@
 import './globals.css';
 
-import { GeistSans } from 'geist/font/sans';
+import { DM_Sans, Space_Grotesk } from 'next/font/google';
 
-let title = 'Next.js + Postgres Auth Starter';
-let description =
-  'This is a Next.js starter kit that uses NextAuth.js for simple email + password login and a Postgres database to persist the data.';
+const spaceGrotesk = Space_Grotesk({
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-heading',
+});
+
+const dmSans = DM_Sans({
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-body',
+});
+
+const title = 'VibVib - AI Video Generation Studio';
+const description =
+  'VibVib turns prompts into cinematic 3:4 videos with fast rendering, director controls, and studio-grade presets.';
 
 export const metadata = {
   title,
@@ -14,7 +26,7 @@ export const metadata = {
     title,
     description,
   },
-  metadataBase: new URL('https://nextjs-postgres-auth.vercel.app'),
+  metadataBase: new URL('https://vibvib.ai'),
 };
 
 export default function RootLayout({
@@ -24,7 +36,11 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={GeistSans.variable}>{children}</body>
+      <body
+        className={`${spaceGrotesk.variable} ${dmSans.variable} font-[var(--font-body)] antialiased`}
+      >
+        {children}
+      </body>
     </html>
   );
 }
